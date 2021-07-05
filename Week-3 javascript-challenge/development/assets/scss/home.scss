@@ -1,0 +1,63 @@
+.home {
+  background-color: $home-bgcolor;
+
+	// NOTES: set CSS variables on assets/scss/globals/_variables.scss
+	// background-color: var(--home-color);
+
+  @include mq(tablet, min) {
+    background-color: #800080;
+  }
+
+}
+.box{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	text-align: center;
+	flex-wrap: wrap;
+	font-family: "Benne";
+	&__title{
+		text-transform: uppercase;
+		border-bottom: 2px solid black;
+		margin: 0;
+	}
+	&__list{
+		width: 310px;
+		height: 300px;
+		margin: 20px;
+		border-radius: 15%;
+		@include font-size(16);
+		padding: 40px 30px;
+		box-shadow: 0 10px 25px 0px rgba(0,0,0,0.6);
+	
+	}
+	&__list:hover{
+		cursor: pointer;
+		transform: translatey(0px);
+		animation: float 4s ease-in-out infinite;
+	}
+	&__list-content{
+		margin: 0;
+		padding: 20px;
+		list-style-type: none;
+	}
+	&__list-item{
+		text-transform: uppercase;
+	}
+	
+}
+
+@keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-20px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+}

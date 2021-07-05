@@ -1,0 +1,113 @@
+/* Class for hiding elements on mobile */
+.hide {
+	display: none;
+
+	@include mq(desktop) {
+		display: initial;
+	}
+}
+
+.furniture {
+	
+	&__title {
+		font-size: 35px;
+
+		@include mq(mobile) {
+			font-size: 40px;
+		}
+	}
+
+	&__headline {
+		text-align: center;
+
+		h2,
+		h3 {
+			margin: 0;
+			padding: 0;
+		}
+
+		h2 {
+			font-family: $font-bold;
+		}
+	}
+
+	&__gallery {
+		/* on mobile, 3 column */
+		display: flex;
+		flex-direction: column;
+
+		@include mq(desktop) {
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		margin: 8px;
+
+		@include mq(mobile) {
+			width: 80%;
+			height: 80%;
+		}
+	}
+
+	&__top,
+	&__bottom {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		@include mq(tablet) {
+			flex-direction: row;
+			align-items: center;
+		}
+
+		@include mq(desktop) {
+			flex-direction: row;
+			min-width: max-content
+		}
+	}
+
+	/* TABLET */
+
+	@include mq(tablet) {
+		padding: 64px 0;
+
+		&__column {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		&__column:nth-child(2) {
+			img {
+				width: 50%;
+			}
+		}
+	}
+
+	/* DESKTOP 🖥️ */
+
+	@include mq(desktop) {
+		&__top {
+			align-items: flex-end;
+		}
+
+		&__bottom {
+			align-items: flex-start;
+		}
+	}
+
+	&__column:nth-child(2) {
+		img {
+			width: auto;
+		}
+	}
+	overflow-x: hidden;
+}

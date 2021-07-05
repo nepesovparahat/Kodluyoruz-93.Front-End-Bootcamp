@@ -1,0 +1,71 @@
+.footer {
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	gap: 48px;
+	padding: 50px;
+	border-top: 1px solid #d8d8d8;
+
+	@include mq(tablet) {
+		justify-content: center;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
+
+		&:hover {
+			color: red;
+			text-decoration: underline;
+		}
+	}
+
+	&__title {
+		font-family: $font-bold;
+		font-size: 24px;
+	}
+
+	&__location,
+	&__phone {
+		display: flex;
+		gap: 10px;
+	}
+
+	&__list {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	&__list-item,
+	&__paragraph,
+	&__phone,
+	&__location,
+	&__title {
+		margin-bottom: 16px;
+	}
+
+	form {
+		display: flex;
+	}
+
+	&__email,
+	&__send {
+		height: 45px;
+		margin: 2px;
+	}
+
+	&__email {
+		background-color: $product-bg;
+		border: 0;
+		padding: 0 12px;
+		width: 240px;
+	}
+
+	&__send {
+		background: $button-color;
+		outline: none;
+		border: 0;
+		width: 45px;
+	}
+}

@@ -1,0 +1,139 @@
+.room {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	background-color: $beautiful-bg;
+	padding: 44px;
+	object-fit: cover;
+	max-width: 1440px;
+	flex-wrap: wrap;
+	gap: 25px;
+
+	@include mq(desktop) {
+		justify-content: space-between;
+	}
+
+	&__text {
+		margin-left: 50px;
+	}
+
+	&__button {
+		background-color: $button-color;
+		color: white;
+		width: 176px;
+		height: 48px;
+		border: 0px;
+	}
+
+	&__imgone {
+		background-image: url("/assets/images/room-img/room_one.webp");
+		// object-fit: scale-down;
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-start;
+		width: 404px;
+		height: 582px;
+		padding: 24px;
+		background-size: cover;
+	}
+
+
+	&__imgo {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		background: rgba(255, 255, 255, 0.3);
+		-webkit-backdrop-filter: blur(3px);
+		backdrop-filter: blur(3px);
+		padding: 32px;
+		gap: 8px;
+
+		h4 {
+			margin: 0;
+			font-family: $font-bold;
+			font-size: 28px;
+		}
+	}
+
+	&__imgt {
+		margin:0;
+	}
+
+	&__btn {
+		background: $button-color;
+		border: 0px;
+		outline: none;
+		width: 48px;
+		height: 48px;
+	}
+
+	.rdt {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		padding: 48px 0;
+	}
+
+	.radio-label {
+		display: block;
+		position: relative;
+		padding-left: 35px;
+		cursor: pointer;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+
+	input {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+
+		&:checked {
+			~ {
+				.checkmark {
+					border: 2px solid $button-color;
+
+					&:after {
+						display: block;
+						background-color: $button-color;
+					}
+				}
+			}
+		}
+	}
+
+	.checkmark {
+		&:after {
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 11px;
+			height: 11px;
+			border-radius: 50%;
+			background: $radio-bg;
+		}
+	}
+
+	.checkmark {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 27px;
+		width: 27px;
+		border-radius: 50%;
+
+		&:after {
+			content: "";
+			position: absolute;
+		}
+	}
+
+	&__imgtwo {
+		align-self: center;
+	
+	}
+}

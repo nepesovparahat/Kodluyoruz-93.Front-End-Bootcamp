@@ -7,9 +7,12 @@
       <div class="home__timer-remaining-txt">{{ startedSec }}</div>
     </div>
     <div class="home__timer-reamining-btn">
-      <button class="home__timer-btn" v-if="btnStartActive" @click="start">Start</button>
-      <button class="home__timer-btn" v-if="btnStopActive" @click="stop">Stop</button>
-      <button class="home__timer-btn" v-if="btnResetActive" @click="reset">Reset</button>
+      <button class="home__timer-btn" v-if="!isTimerActive" @click="start">Start</button>
+      <template v-else>
+        <button class="home__timer-btn" @click="stop">Stop</button>
+        <button class="home__timer-btn"  @click="reset">Reset</button>
+      </template>
+      
     </div>
   </div>
 </template>
@@ -17,23 +20,20 @@
 import { ref, onMounted, onUnmounted } from "vue";
 export default {
   setup() {
-    let btnStartActive = ref(true);
-    let btnStopActive = ref(false);
-    let btnResetActive = ref(false);
+    let isTimerActive = ref(false);
     let startedHour = ref("0" + 0);
     let startedMin = ref("0" + 0);
     let startedSec = ref("0" + 0);
     let time = ref(60);
     let timer = "";
     function start() {
-      btnStartActive.value = false;
-      btnStopActive.value = true;
-      btnResetActive.value = false;
+      if(isTimerActive.value) return '';
       timer = setInterval(countDownUpdate, 1000);
     }
 	
 
     function countDownUpdate() {
+      isTimerActive.value = true;
       let timerAudio = new Audio(
         "https://audio-previews.elements.envatousercontent.com/files/83038071/preview.mp3"
       );
@@ -54,9 +54,7 @@ export default {
     }
     function stop() {
       clearInterval(timer);
-      btnStartActive.value = true;
-      btnResetActive.value = true;
-      btnStopActive.value = false;
+      isTimerActive.value = false
     }
 
     function reset() {
@@ -65,15 +63,11 @@ export default {
       startedMin.value = "0" + 0;
       startedSec.value = "0" + 0;
       time.value = 60;
-      countDownUpdate();
-      btnResetActive.value = false;
     }
     onMounted(() => console.log("Mount: ⛰ Home Component"));
     onUnmounted(() => stop());
     return {
-      btnResetActive,
-      btnStopActive,
-      btnStartActive,
+      isTimerActive,
       startedHour,
       startedMin,
       startedSec,
